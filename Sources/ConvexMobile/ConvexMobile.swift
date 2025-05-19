@@ -285,7 +285,8 @@ private class SubscriptionAdapter<T: Decodable>: QuerySubscriber {
   }
 
   func onUpdate(value: String) {
-    publisher.send(try! JSONDecoder().decode(Publisher.Output.self, from: Data(value.utf8)))
+    if let decodedData = try? JSONDecoder().decode(Publisher.Output.self, from: Data(value.utf8)) {
+        publisher.send(decodedData)
+    }
   }
-
 }
