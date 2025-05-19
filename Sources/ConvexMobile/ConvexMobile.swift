@@ -285,11 +285,11 @@ private class SubscriptionAdapter<T: Decodable>: QuerySubscriber {
   }
 
   func onUpdate(value: String) {
-      do {
-          let decodedData = try JSONDecoder().decode(Publisher.Output.self, from: Data(value.utf8))
-          publisher.send(decodedData)
-      } catch {
-          publisher.send(completion: Subscribers.Completion.failure(ClientError.InternalError(msg: error.localizedDescription)))
-      }
+    do {
+      let decodedData = try JSONDecoder().decode(Publisher.Output.self, from: Data(value.utf8))
+      publisher.send(decodedData)
+    } catch {
+      publisher.send(completion: Subscribers.Completion.failure(ClientError.InternalError(msg: error.localizedDescription)))
+    }
   }
 }
