@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ConvexEncodable {
+public protocol ConvexEncodable: Sendable {
   func convexEncode() throws -> String
 }
 
