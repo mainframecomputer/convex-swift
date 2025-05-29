@@ -147,7 +147,7 @@ public class ConvexClient {
       args?.mapValues({ v in
         try v?.convexEncode() ?? "null"
       }) ?? [:])
-    return try! JSONDecoder().decode(T.self, from: Data(rawResult.utf8))
+    return try JSONDecoder().decode(T.self, from: Data(rawResult.utf8))
   }
 
   typealias RemoteCall = (String, [String: String]) async throws -> String
